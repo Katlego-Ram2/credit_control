@@ -1,0 +1,76 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Credit Control</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-info">
+    <div class="card-header">
+      <h3 class="card-title">Customer Details</h3>
+    </div>
+    <div class="card-body">
+      <form id="customerForm" class="form-horizontal" (ngSubmit)="submitForm()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="form-label col">Account Number:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.accountNumber" name="accountNumber">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="form-label col">Name Of Account:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.nameOfAccount" name="nameOfAccount">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="form-label col">Email Address:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.emailAddress" name="emailAddress">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="form-label col">Cell:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.cell" name="cell">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="form-label col">Tel:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.tel" name="tel">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+           
+            <div class="form-group row">
+              <label class="form-label col">Last Paid:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.lastPaid" name="lastPaid">
+              </div>
+            </div>
+           
+            <div class="form-group row">
+              <label class="form-label col">NR Of ARR:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.nrOfArr" name="nrOfArr">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="form-label col">HandOver:</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.handOver" name="handOver">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Information</button>&ensp;<button type="button" class="btn btn-secondary" style="margin-left: 50%;">Print</button>
+      </form>
+    </div>
+  </div>
+  
