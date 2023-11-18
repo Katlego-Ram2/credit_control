@@ -15,6 +15,8 @@
 @import 'ngx-toastr/toastr';
 @import './custom.css';
 
+
+
 body {
     width: 100vw;
     height: 100vh;
@@ -63,3 +65,5 @@ body {
 //     border: 1px solid red;
 //   }
   
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

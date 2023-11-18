@@ -32,11 +32,11 @@ export class MenuSidebarComponent implements OnInit {
 }
 
 export const MENU = [
-    /* {
+    {
         name: 'Dashboard',
         iconClasses: 'fas fa-home',
         path: ['/dashboard']
-    } */
+    } ,
     {
         name: 'Dashboard',
         iconClasses: 'fas fa-home',        

@@ -13,20 +13,20 @@
         <div class="row">
             <div class="col-12">
                 <div class="card" style="max-height: 680px; overflow-y: auto;">
+                    <!-- Your HTML template -->
                     <div class="card-header">
-                        <h3 class="card-title">Boksburg</h3>
+                        <h3 class="card-title">Search Account no:</h3>
+                        <input class="form-control" placeholder="Customer Account:" type="text" (input)="searchCustomer($event.target.value)">
                         <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                              
-                            </div>
+                          <div class="input-group input-group-sm" style="width: 150px;"></div>
                         </div>
-                    </div>
-  
-                    <div class="card-body table-responsive p-0">
+                      </div>
+                      
+                      <div class="card-body table-responsive p-0">
                         <div class="process-container">
-                            <table class="table table-hover text-nowrap">
-                                <thead>
-                                    <tr>
+                          <table class="table table-hover text-nowrap">
+                            <thead>
+                              <tr>
                                         <th>Account Number</th>
                                         <th>Name of Account</th>
                                         <th>Email Address</th>
@@ -36,12 +36,11 @@
                                         <th>NR OF ARR</th>
                                         <th>HandOver</th>
                                         <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
-                            
-  
                                 <tbody data-spy="scroll" data-target=".navbar" data-offset="50">
-                                    <tr *ngFor="let item of data">
+                                  <tr *ngFor="let item of filteredData">
                                         <!-- <td *ngIf="item.instances > 0" (click)="navigateToProcessInstance(item.description, item.id, item.instances)"
                                             (mouseover)="addHoverClass($event)"
                                             (mouseout)="removeHoverClass($event)" [class.blue-and-underlined]="item.instances > 0" [class.no-instances]="item.instances === 0">
@@ -56,8 +55,8 @@
                                         <td>{{ item.nrOfArr }}</td>
                                         <td>{{ item.handOver }}</td>  
                                         
-                                        <td><button class="btn btn-primary">Accept</button></td>
-                                        <td><button class="btn btn-warning">Reject</button></td>
+                                        <td><button  class="btn btn-primary" (click)="acceptCustomer(item.accountNumber)">Accept</button></td>
+                                        <td><button class="btn btn-warning" (click)="rejectCustomer(item.accountNumber)">Reject</button></td>
                                            
                                     </tr>
                                 </tbody>

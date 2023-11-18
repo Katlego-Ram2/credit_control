@@ -1,76 +1,123 @@
+<!-- dashboard.component.html -->
+
 <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Credit Control</h1>
-        </div>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+       
+        <h1 class="m-0 text-dark">Credit Control</h1>
       </div>
     </div>
   </div>
-  <div class="card card-info">
-    <div class="card-header">
-      <h3 class="card-title">Customer Details</h3>
-    </div>
-    <div class="card-body">
-      <form id="customerForm" class="form-horizontal" (ngSubmit)="submitForm()">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="form-label col">Account Number:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.accountNumber" name="accountNumber">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="form-label col">Name Of Account:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.nameOfAccount" name="nameOfAccount">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="form-label col">Email Address:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.emailAddress" name="emailAddress">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="form-label col">Cell:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.cell" name="cell">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="form-label col">Tel:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.tel" name="tel">
+</div>
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">Customer Details</h3>
+  </div>
+  <div class="card-body">
+    <form id="customerForm" class="form-horizontal" (ngSubmit)="submitForm()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="form-label col" for="accountNumberInput">Account Number:</label>
+            <div class="col">
+              <input type="text" id="accountNumberInput"  class="form-control" placeholder="" [(ngModel)]="formData.accountNumber" name="accountNumber" 
+                required pattern="^22\d{8}$" #accountNumberInput="ngModel">
+              <div *ngIf="accountNumberInput.invalid && (accountNumberInput.dirty || accountNumberInput.touched)" class="text-danger">
+                <div *ngIf="accountNumberInput.errors.required">
+                  Account Number is required.
+                </div>
+                <div *ngIf="accountNumberInput.errors.pattern">
+                  Account Number must be a 10-digit number starting with 22.
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-           
-            <div class="form-group row">
-              <label class="form-label col">Last Paid:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.lastPaid" name="lastPaid">
+          <div class="form-group row">
+            <label class="form-label col">Name Of Account:</label>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.nameOfAccount" name="nameOfAccount" required #nameOfAccountInput="ngModel">
+              <div *ngIf="nameOfAccountInput.invalid && (nameOfAccountInput.dirty || nameOfAccountInput.touched)" class="text-danger">
+                Name Of Account is required.
+              </div>
+              <div *ngIf="nameOfAccountInput.errors.pattern">
+                Name Of Account is required.
               </div>
             </div>
-           
-            <div class="form-group row">
-              <label class="form-label col">NR Of ARR:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.nrOfArr" name="nrOfArr">
+          </div>
+          <div class="form-group row">
+            <label class="form-label col">Email Address:</label>
+            <div class="col">
+              <input type="text"  class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$"  placeholder="" [(ngModel)]="formData.emailAddress" name="emailAddress" required #emailAddressInput="ngModel">
+              <div *ngIf="emailAddressInput.invalid && (emailAddressInput.dirty || emailAddressInput.touched)" class="text-danger">
+                Email Address is required.
               </div>
             </div>
-            <div class="form-group row">
-              <label class="form-label col">HandOver:</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.handOver" name="handOver">
+          </div>
+          <div class="form-group row">
+            <label class="form-label col">Cell:</label>
+            <div class="col">
+              <input type="text" class="form-control" pattern="(^0[687][12346789]((\d{7})|( |-)((\d{3}))( |-)(\d{4})|( |-)(\d{7})))" placeholder="" [(ngModel)]="formData.cell" name="cell" required #cellInput="ngModel">
+              <div *ngIf="cellInput.invalid && (cellInput.dirty || cellInput.touched)" class="text-danger">
+                Cell is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="form-label col">Tel:</label>
+            <div class="col">
+              <input type="text" class="form-control" pattern="(^0[687][12346789]((\d{7})|( |-)((\d{3}))( |-)(\d{4})|( |-)(\d{7})))" placeholder="" [(ngModel)]="formData.tel" name="tel" required #telInput="ngModel">
+              <div *ngIf="telInput.invalid && (telInput.dirty || telInput.touched)" class="text-danger">
+                Tel is required.
               </div>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit Information</button>&ensp;<button type="button" class="btn btn-secondary" style="margin-left: 50%;">Print</button>
-      </form>
-    </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="form-label col">Last Paid:</label>
+            <div class="col">
+              <input type="text" class="form-control"  placeholder="" [(ngModel)]="formData.lastPaid" name="lastPaid" required #lastPaidInput="ngModel">
+              <div *ngIf="lastPaidInput.invalid && (lastPaidInput.dirty || lastPaidInput.touched)" class="text-danger">
+                Last Paid is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="form-label col">NR Of ARR:</label>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.nrOfArr" name="nrOfArr" required #nrOfArrInput="ngModel">
+              <div *ngIf="nrOfArrInput.invalid && (nrOfArrInput.dirty || nrOfArrInput.touched)" class="text-danger">
+                NR Of ARR is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="form-label col">HandOver:</label>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.handOver" name="handOver" required #handOverInput="ngModel">
+              <div *ngIf="handOverInput.invalid && (handOverInput.dirty || handOverInput.touched)" class="text-danger">
+                HandOver is required.
+              </div>
+            </div>
+          </div>
+          <!-- Additional section for Address -->
+          <div class="form-group row">
+            <label class="form-label col">Address:</label>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="formData.address" name="address" required #addressInput="ngModel">
+              <div *ngIf="addressInput.invalid && (addressInput.dirty || addressInput.touched)" class="text-danger">
+                Address is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-right: 5px;">Submit Information</button>
+
+<button type="button" class="btn btn-primary" (click)="navigateToPrintComponent()" style="background-color: green; color: #fff; margin-left: 5px;">View Summary</button>
+
+
+    </form>
   </div>
-  
+</div>

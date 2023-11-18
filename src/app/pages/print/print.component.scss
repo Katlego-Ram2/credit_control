@@ -1,0 +1,54 @@
+p{
+    display: flex;
+    justify-content: flex-end;
+}
+/* your-component.component.css */
+@media print {
+    body {
+      font-size: 3pt;
+    color: blue;
+   
+      /* Add other print-specific styles here */
+    }
+
+    
+  }
+  .table-container {
+    max-height: 400px; /* Adjust the height as per your design */
+    overflow: auto;
+    position: relative;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table thead th {
+    background-color: #f1f1f1;
+    position: sticky;
+    top: 0;
+
+  }
+  th{
+    z-index: 1;
+  }
+  .table-body {
+    max-height: 100%;
+    overflow: auto;
+  }
+  
+  @media print {
+    .btn-print {
+      display: none;
+    }
+  }
+  @media print {
+    body {
+      font-family: 'Times New Roman', serif;
+      /* Additional print styles if needed */
+    }
+  }
+  
+
+  

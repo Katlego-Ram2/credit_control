@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '@services/auth-service.service';
 
 @Component({
   selector: 'app-user-login',
@@ -11,8 +12,9 @@ export class UserLoginComponent implements OnInit {
   isAuthLoading: boolean = false;
   isFacebookLoading: boolean = false;
   isGoogleLoading: boolean = false;
-
-  constructor(private fb: FormBuilder) {}
+username: string;
+  password: string;
+  constructor(private fb: FormBuilder,private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -21,7 +23,18 @@ export class UserLoginComponent implements OnInit {
     });
   }
 
-  loginByAuth() {
-    // Implement your authentication logic here
+  login(): void {
+    this.authService.login(this.username, this.password).subscribe((token) => {
+      if (token) {
+        console.log('Login successful!');
+      } else {
+        console.log('Login failed.');
+      }
+    });
+  }
+
+  logout(): void {
+    this.authService.logout();
+    console.log('Logged out.');
   }
 }

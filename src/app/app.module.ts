@@ -24,13 +24,12 @@ import {uiReducer} from './store/ui/reducer';
 import { FormsModule } from '@angular/forms';
 import {ProfabricComponentsModule} from '@profabric/angular-components';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ProcessInstancesComponent } from './process-instances/process-instances.component';
 
-
+import { PrintComponent } from '@pages/print/print.component';
+import { NgxPrintModule } from 'ngx-print';
 import { DisplayDetailsComponent } from './display-details/display-details.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-
-
+import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 
 
 
@@ -50,10 +49,11 @@ registerLocaleData(localeEn, 'en-EN');
         MainMenuComponent,
         SubMenuComponent,
         WelcomeComponent,
-        ProcessInstancesComponent,
-    
+       
+        PrintComponent,
         DisplayDetailsComponent,
         UserLoginComponent,
+        CommentDialogComponent,
      
     
     ],
@@ -67,6 +67,10 @@ registerLocaleData(localeEn, 'en-EN');
         AppRoutingModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        NgxPrintModule,
+       
+        ToastrModule.forRoot(),
+        
         ToastrModule.forRoot({
             timeOut: 3000,
             positionClass: 'toast-top-right',

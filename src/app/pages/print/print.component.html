@@ -1,0 +1,45 @@
+<div class="container" >
+    <!-- <div class="row justify-content-center align-items-center vh-100">      -->
+        <div class="card-body">
+            <div class="col-md-12" #contentToPrint style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                <img src="../../../assets/img/CoE_Logo-01.png" width="50px" height="50px" alt="eku">
+               <p style="float: inline-end;">Date: {{ currentDate }}</p>
+                <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Account Number</th>
+                        <th>Name Of Account</th>
+                        <th>Email</th>
+                        <th>Tel</th>
+                        <th>Last paid</th>
+                        <th>NR OF ARR</th>
+                        <th>Handover</th>
+                        <th>comment</th>
+                        <th>Status</th>
+                        
+                       
+                    </tr>
+                </thead>
+                <tbody data-spy="scroll" data-target=".navbar" data-offset="50" >
+                    <tr *ngFor="let item of data">
+                     
+                      
+                                        <td>{{ item.accountNumber }}</td>
+                                        <td>{{ item.nameOfAccount }}</td>
+                                        <td>{{ item.emailAddress }}</td>
+                                        <td>{{ item.cell }}</td>
+                                        <td>{{ item.tel }}</td>
+                                        <td>{{ item.lastPaid }}</td>
+                                        <td>{{ item.nrOfArr }}</td>
+                                        <td>{{ item.handOver }}</td> 
+                                        <td>{{item.status}}</td>
+                                       
+                    </tr>
+                   
+                </tbody>
+                
+                </table>
+                <button type="button" printSectionId="contentToPrint" class="btn btn-primary btn-print"  (click)="printContent()">Print</button>
+            </div>
+        </div>
+    </div>

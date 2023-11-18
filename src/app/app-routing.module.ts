@@ -7,17 +7,19 @@ import {ProfileComponent} from '@pages/profile/profile.component';
 
 import {DashboardComponent} from '@pages/dashboard/dashboard.component';
 
-import {AuthGuard} from '@guards/auth.guard';
+
 import {NonAuthGuard} from '@guards/non-auth.guard';
 
 
 import {MainMenuComponent} from '@pages/main-menu/main-menu.component';
 import {SubMenuComponent} from '@pages/main-menu/sub-menu/sub-menu.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ProcessInstancesComponent } from './process-instances/process-instances.component';
+
 
 import { DisplayDetailsComponent } from './display-details/display-details.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { PrintComponent } from '@pages/print/print.component';
+import { MenuSidebarComponent } from '@modules/main/menu-sidebar/menu-sidebar.component';
 
 
 
@@ -32,6 +34,8 @@ const routes: Routes = [
         path:"login",
         component:UserLoginComponent
     },
+    
+
     {
         path: '',
         component: MainComponent,
@@ -52,13 +56,15 @@ const routes: Routes = [
                 path: 'dashboard',
                 component: DashboardComponent
             },
-            {
-                path:'process-instance/:id/:description',
-                component:ProcessInstancesComponent
-            },
+          
             {
                 path:"display",component:DisplayDetailsComponent
+            },
+            {
+                path:'print',component:PrintComponent
             }
+           
+            
            
             
          

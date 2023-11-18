@@ -14,7 +14,7 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user (optional) -->
-    <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
             <pf-image
                 [src]="user.picture"
@@ -25,13 +25,22 @@
                 height="34"
                 rounded
             ></pf-image>
-        </div>
+            <p>Super Admin</p>
+        </div> 
+
+
         <div class="info">
             <a [routerLink]="['/profile']" class="d-block">
                 {{ user.email }}
             </a>
+
+            <div class="info">
+                <a [routerLink]="['/profile']" class="d-block">
+                    {{ user.email }}
+                </a>
+            </div>
         </div>
-    </div> -->
+    </div> 
 
     <!-- <div class="form-inline">
         <app-sidebar-search></app-sidebar-search>

@@ -16,4 +16,8 @@ export class DataService {
     // Make an HTTP request to trigger the function
     return this.http.post(url, {});
   }
+  getUserDetails(accountNumber: string): Observable<any> {
+    const url = `${this.apiUrl}/getUserDetails?accountNumber=${accountNumber}`;
+    return this.http.get<any>(url);
+  }
 }
