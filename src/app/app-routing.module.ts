@@ -20,6 +20,8 @@ import { DisplayDetailsComponent } from './display-details/display-details.compo
 import { UserLoginComponent } from './user-login/user-login.component';
 import { PrintComponent } from '@pages/print/print.component';
 import { MenuSidebarComponent } from '@modules/main/menu-sidebar/menu-sidebar.component';
+import { DisplayComponent } from './display/display.component';
+import { LoginSuperAdminComponent } from './login-super-admin/login-super-admin.component';
 
 
 
@@ -34,7 +36,10 @@ const routes: Routes = [
         path:"login",
         component:UserLoginComponent
     },
-    
+    {
+        path:'super',component:LoginSuperAdminComponent
+    },
+   
 
     {
         path: '',
@@ -58,7 +63,7 @@ const routes: Routes = [
             },
           
             {
-                path:"display",component:DisplayDetailsComponent
+                path:"display",component:DisplayComponent
             },
             {
                 path:'print',component:PrintComponent

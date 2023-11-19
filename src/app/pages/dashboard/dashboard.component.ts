@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // dashboard.component.ts
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -19,9 +19,21 @@ export class DashboardComponent implements OnInit {
   formData: any = {}; // Define an object to hold form data
   formError: any = {}; // Define an object to hold form validation errors
   FormValid: boolean = false;
-  constructor(private http: HttpClient, private toastr: ToastrService, private fb: FormBuilder,private router: Router) {
+
+  // Define a form group for better control over form validation
+  customerForm: FormGroup;
+  constructor(private http: HttpClient, private toastr: ToastrService, private fb: FormBuilder,
+    
+    private router: Router) {
+      
     this.toastr.toastrConfig.timeOut = 3000;
+   this.customerForm = this.fb.group({
+      accountNumber: ['', [Validators.required, Validators.pattern(/^22\d{8}$/)]],
+      // ... Other form controls ...
+      // Add validation for other fields as needed
+    });
   }
+
 
   ngOnInit() {}
 
@@ -104,6 +116,9 @@ export class DashboardComponent implements OnInit {
     // Repeat the validation for other fields...
 
     return isValid;
+  }
+  isSubmitButtonEnabled(): boolean {
+    return this.customerForm.valid;
   }
   navigateToPrintComponent() {
     this.router.navigate(['/print']);

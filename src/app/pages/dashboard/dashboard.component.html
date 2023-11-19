@@ -48,7 +48,7 @@
           <div class="form-group row">
             <label class="form-label col">Email Address:</label>
             <div class="col">
-              <input type="text"  class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$"  placeholder="" [(ngModel)]="formData.emailAddress" name="emailAddress" required #emailAddressInput="ngModel">
+              <input type="text"  class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$"  placeholder="" [(ngModel)]="formData.emailAddress" name="emailAddress" #emailAddressInput="ngModel">
               <div *ngIf="emailAddressInput.invalid && (emailAddressInput.dirty || emailAddressInput.touched)" class="text-danger">
                 Email Address is required.
               </div>
@@ -113,7 +113,8 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" style="margin-right: 5px;">Submit Information</button>
+      <button type="submit" class="btn btn-primary" style="margin-right: 5px;" [disabled]="!isSubmitButtonEnabled()">Submit Information</button>
+
 
 <button type="button" class="btn btn-primary" (click)="navigateToPrintComponent()" style="background-color: green; color: #fff; margin-left: 5px;">View Summary</button>
 

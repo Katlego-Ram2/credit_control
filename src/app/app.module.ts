@@ -30,6 +30,8 @@ import { NgxPrintModule } from 'ngx-print';
 import { DisplayDetailsComponent } from './display-details/display-details.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
+import { DisplayComponent } from './display/display.component';
+import { LoginSuperAdminComponent } from './login-super-admin/login-super-admin.component';
 
 
 
@@ -54,6 +56,8 @@ registerLocaleData(localeEn, 'en-EN');
         DisplayDetailsComponent,
         UserLoginComponent,
         CommentDialogComponent,
+        DisplayComponent,
+        LoginSuperAdminComponent,
      
     
     ],

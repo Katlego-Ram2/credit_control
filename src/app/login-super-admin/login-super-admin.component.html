@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+      <div class="card card-outline card-primary">
+  
+        <div class="card-header text-center">
+          <a [routerLink]="['/']" class="h1">
+            <img src="../../../assets/img/CoE_Logo-01.png" alt="coe_logo" class="logo">
+          </a>
+          <p class="login_title"><b>Super-Admin</b></p>
+        </div>
+        <div class="card-body login-card-body">
+          <p class="login-box-msg"><b>Login</b></p>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div *ngIf="loginForm.get('userId').invalid && loginForm.get('userId').touched" class="text-danger">
+              Please enter a valid email address.
+            </div>
+            <div class="input-group mb-3" [ngClass]="{'border-danger': loginForm.get('userId').invalid && loginForm.get('userId').touched}">
+              <input
+                type="email"
+                formControlName="userId"
+                class="form-control"
+                name="emailAddress"
+                placeholder="Email"
+                required
+                maxlength="100"
+                autocomplete="off"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+  
+            <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched" class="text-danger">
+              Please enter a password.
+            </div>
+            <div class="input-group mb-3" [ngClass]="{'border-danger': loginForm.get('password').invalid && loginForm.get('password').touched}">
+              <input
+                formControlName="password"
+                class="form-control"
+                type="password"
+                placeholder="Password"
+                title="Password must have a minimum of eight characters"
+                maxlength="20"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col">
+                <pf-button
+                  [type]="'submit'"
+                  [block]="true"
+                  [loading]="isAuthLoading"
+                  [disabled]="isFacebookLoading || isGoogleLoading"
+                >
+                  Sign In
+                </pf-button>
+              </div>
+            </div>
+          </form>
+  
+         
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+    </div>
+  </div>
+  

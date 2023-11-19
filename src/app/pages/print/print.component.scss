@@ -48,7 +48,67 @@ p{
       font-family: 'Times New Roman', serif;
       /* Additional print styles if needed */
     }
-  }
-  
+    /* print.component.scss */
 
-  
+html, body {
+  font: 100%/1.5 Verdana, sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  display: block;
+}
+
+.card-body {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: normal;
+  border-bottom: 1px solid #ddd;
+  margin: 30px 0;
+}
+
+.col-md-12 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Pagination styles */
+/* print.component.scss */
+
+/* ... Your existing styles ... */
+
+/* Updated Pagination styles */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline;
+  margin-right: 5px; /* Add some space between pagination boxes */
+}
+
+.pagination li a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px 10px;
+  color: #000;
+  border: 1px solid #ddd; /* Add a border around the pagination boxes */
+  border-radius: 5px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.pagination li a.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.pagination li a:hover:not(.active) {
+  background-color: #ddd;
+}
+  }

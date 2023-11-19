@@ -13,11 +13,17 @@ export class PrintComponent implements OnInit {
   constructor(private dataService: DataService) {}
  
   currentDate: string;
+  data: any[] = [];
+  paginatedData: any[] = [];
+  rowsPerPage: number = 8; 
+  currentPage: number = 0;
     
     ngOnInit(): void {
       this.fetchData();
       const rawDate = new Date();
     this.currentDate = this.formatDate(rawDate, 'dd/MM/yyyy');
+    this.setPage(0);
+    
 }
 private formatDate(date: Date, format: string): string {
   const day = date.getDate();
@@ -34,6 +40,21 @@ private formatDate(date: Date, format: string): string {
     return ''; // Handle other formats
   }
 }
+
+
+
+
+  get totalRows(): number {
+    return this.data.length;
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.totalRows / this.rowsPerPage);
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
 // printContent(): void {
 //   const printWindow = window.open('', '_blank');
 
@@ -87,8 +108,7 @@ private formatDate(date: Date, format: string): string {
 //     console.error('Unable to open print window');
 //   }
 // }
-data: any[] = [];
-  filteredData: any[] = [];
+
   
 
   
@@ -104,6 +124,19 @@ data: any[] = [];
       }
     );
   }
+  paginateData() {
+    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
+    const endIndex = startIndex + this.rowsPerPage;
+    this.paginatedData = this.data.slice(startIndex, endIndex);
+  }
+  
+
+  setPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.paginateData();
+    }
+  }
   printContent(): void {
     const printWindow = window.open('', '_blank');
   
@@ -115,7 +148,7 @@ data: any[] = [];
             <!-- Include Bootstrap CSS -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-          <style>
+        
 
             <style>
               body {

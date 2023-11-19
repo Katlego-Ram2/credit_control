@@ -1,0 +1,71 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Credit Control</h1>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="max-height: 680px; overflow-y: auto;">
+                    <!-- Your HTML template -->
+                    <div class="card-header">
+                        <h3 class="card-title">Search Account no:</h3>
+                        <input class="form-control" placeholder="Customer Account:" type="text" (input)="searchCustomer($event.target.value)">
+                        <div class="card-tools">
+                          <div class="input-group input-group-sm" style="width: 150px;"></div>
+                        </div>
+                      </div>
+                      
+                      <div class="card-body table-responsive p-0">
+                        <div class="process-container">
+                          <table class="table table-hover text-nowrap">
+                            <thead>
+                              <tr>
+                                        <th>Account Number</th>
+                                        <th>Name of Account</th>
+                                        <th>Email Address</th>
+                                        <th>Cell</th>
+                                        <th>Tel</th>
+                                        <th>Last Paid</th>
+                                        <th>NR OF ARR</th>
+                                        <th>HandOver</th>
+                                        <th>Action</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody data-spy="scroll" data-target=".navbar" data-offset="50">
+                                  <tr *ngFor="let item of filteredData">
+                                        <!-- <td *ngIf="item.instances > 0" (click)="navigateToProcessInstance(item.description, item.id, item.instances)"
+                                            (mouseover)="addHoverClass($event)"
+                                            (mouseout)="removeHoverClass($event)" [class.blue-and-underlined]="item.instances > 0" [class.no-instances]="item.instances === 0">
+                                            {{ item.description }}
+                                        </td> -->
+                                        <td>{{ item.accountNumber }}</td>
+                                        <td>{{ item.nameOfAccount }}</td>
+                                        <td>{{ item.emailAddress }}</td>
+                                        <td>{{ item.cell }}</td>
+                                        <td>{{ item.tel }}</td>
+                                        <td>{{ item.lastPaid }}</td>
+                                        <td>{{ item.nrOfArr }}</td>
+                                        <td>{{ item.handOver }}</td>  
+                                        
+                                        <td><button  class="btn btn-primary" (click)="acceptCustomer(item.accountNumber)">Accept</button></td>
+                                        <td><button class="btn btn-warning" (click)="rejectCustomer(item.accountNumber)">Reject</button></td>
+                                           
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

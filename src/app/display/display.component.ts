@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentDialogComponent } from '@/comment-dialog/comment-dialog.component';
 @Component({
-  selector: 'app-display-details',
-  templateUrl: './display-details.component.html',
-  styleUrls: ['./display-details.component.scss']
+  selector: 'app-display',
+  templateUrl: './display.component.html',
+  styleUrls: ['./display.component.scss']
 })
-export class DisplayDetailsComponent implements OnInit {
+export class DisplayComponent implements OnInit {
   data: any[] = [];
   filteredData: any[] = [];
-  constructor(private dataService: DataService,private http: HttpClient,private dialog: MatDialog) {}
+  constructor(private dataService: DataService,private http: HttpClient) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -59,46 +59,31 @@ filterData(accountNumber: string): void {
     (item.handOver || '').toLowerCase().includes(accountNumber.toLowerCase())
   );
 }
-
 acceptCustomer(accountNumber: string): void {
   this.http.post<any>('http://localhost:3000/approveCustomer', { accountNumber }).subscribe(
     (response) => {
       console.log('Customer approved:', response);
-      this.fetchData(); 
-      // Refresh data after update
+      this.fetchData(); // Refresh data after update
+     
     },
     (error) => {
       console.error('Error approving customer:', error);
-     
     }
   );
 }
 
 rejectCustomer(accountNumber: string): void {
-  const dialogRef = this.dialog.open(CommentDialogComponent, {
-    width: '400px',
-  });
-
-  dialogRef.afterClosed().subscribe((comment: string) => {
-    if (comment) {
-      // User submitted a comment, handle it as needed
-      console.log('Comment submitted:', comment);
-
-      // Now you can proceed with the rejection logic
-      this.http.post<any>('http://localhost:3000/rejectCustomer', { accountNumber, comment }).subscribe(
-        (response) => {
-          console.log('Customer rejected:', response);
-          this.fetchData(); // Refresh data after update
-        },
-        (error) => {
-          console.error('Error rejecting customer:', error);
-        }
-      );
-    } else {
-      // User canceled the dialog
-      console.log('Comment dialog canceled');
+  this.http.post<any>('http://localhost:3000/rejectCustomer', { accountNumber }).subscribe(
+    (response) => {
+      console.log('Customer rejected:', response);
+      this.fetchData(); // Refresh data after update
+   
+    },
+    (error) => {
+      console.error('Error rejecting customer:', error);
+     
     }
-  });
+  );
 }
 
   
